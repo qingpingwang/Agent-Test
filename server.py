@@ -174,7 +174,7 @@ def get_history(thread_id):
         config = {"configurable": {"thread_id": thread_id}}
         state = graph.get_state(config)
         
-        if not state:
+        if not state or len(state.values) == 0:
             return jsonify({"success": False, "error": "thread_not_found"}), 404
         
         messages = []
